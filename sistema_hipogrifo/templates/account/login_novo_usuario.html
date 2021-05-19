@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/account/style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="content first-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Bem vindo !</h2>
+                <p class="description description-primary">Para se manter conectado conosco realize o login com suas informações pessoais </p>
+                <button id="signin" class="btn btn-primary">Entrar</button>
+            </div>    
+            <div class="second-column">
+                <h2 class="title title-second">Cadastro</h2>
+                <br>
+                <form class="form">
+                    <label class="label-cadastrar" for="">
+                        <i class="far fa-user icon-modify"></i>
+                        <input type="text" placeholder="Nome">
+                    </label>
+                    
+                    <label class="label-cadastrar" for="">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input type="text" placeholder="CPF" maxlength="11">
+                    </label>
+                    
+                    <label class="label-cadastrar" for="">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input type="email" placeholder="Email">
+                    </label>
+
+                    <label class="label-cadastrar" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" placeholder="Senha">
+                    </label>
+
+                    <label class="label-cadastrar" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" placeholder="Confirme sua senha">
+                    </label>
+                
+                       <label class="label-cadastrar" for="">
+                         <select id = "custom-select" name="tipousuario">
+                         <option>Selecione seu tipo de usuário</option>
+                         <option> Aluno </option>
+                         <option> Professor</option>
+                        <option> Administrador</option>
+                         </select>
+                        </label>
+
+                    <button class="btn btn-second">Salvar</button>        
+                </form>
+            </div><!-- second column -->
+        </div><!-- first content -->
+        <div class="content second-content">
+            <div class="first-column">
+                <p class="description description-primary">Entre com suas informações pessoais,</p>
+                <p class="description description-primary"> para começar sua jornada conosco !</p>
+                <button id="signup" class="btn btn-primary">Cadastrar</button>
+            </div>
+            <div class="second-column">
+                <h2 class="title title-second">Login</h2>
+                <form class="form" action="{% url 'signin' %}"  method="POST">
+                    {% csrf_token %}
+                    <label class="label-input" for="">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input id="email" name="email" type="email" placeholder="Email" required>
+                    </label>
+                
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input id="password" name="password" type="password" placeholder="Senha" required>
+                    </label>
+                    {% for erro in erros %}
+                       <label style="text-align: center;color: red"> {{erro}}</label>
+                    {% endfor %}
+
+                    <a class="password" href="#">Esqueceu a senha? </a>
+                    <button type="submit" class="btn btn-second">Entrar</button>
+                </form>
+            </div><!-- second column -->
+        </div><!-- second-content -->
+    </div>
+    <script type="text/javascript"  src="{% static 'js/account/app.js' %}"></script>
+</body>
+</html>

@@ -5,6 +5,36 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from .uteis import gerar_senha  
 
+def signin(request):
+    context = {}
+    if request.method == "POST":
+        email = request.POST["email"]
+        password = request.POST["password"]
+        usuario = authenticate(request, email=email, password=password)
+        if usuario is not None:
+            login(request, usuario)
+            return redirect('teste_de_login')
+        else:
+             context.update({'erros':['Campo Usuário ou Senha: Inválido.']})
+    return render(request,'account/login_novo_usuario.html',context)
+
+    # context = {}
+    # if request.method == "POST":
+    #     print("entrei 1")
+    #     form_usuario = UserCreationForm(request.POST)
+    #     if form_usuario.is_valid():
+    #         print("entrei 2")
+    #         form_usuario.save()
+    #         return redirect('index')
+    #     else:
+    #         print("entrei 3")
+    #         context.update({'erros':['Campo Usuário ou Senha: Inválido.']})  
+    # # return render(request, 'usuarios/cadastro.html', {'form_usuario': form_usuario})
+    # return render(request,'account/login_novo_usuario.html',context)
+
+def signup(request):
+    return render(request,'account/login_novo_usuario.html')
+
 def cadastrar_usuario(request):
     if request.method == "POST":
         form_usuario = UserCreationForm(request.POST)
