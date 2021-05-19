@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de usuários</title>
+</head>
+<body>
+    {% load crispy_forms_tags %}
+<form method="post">
+    <div name="form-groupe">
+        {% csrf_token %}
+        {{form_redefinir_senha}}
+        <input type="submit" value="Redefinir" class="btn btn-primary">
+    </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+</body>
+</html>

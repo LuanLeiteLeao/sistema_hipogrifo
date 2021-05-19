@@ -1,0 +1,20 @@
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Nome</td>
+        <td>Email</td>
+        <td>Tipo Usuário</td>
+        <td>Editar</td>
+        <td>Excluir</td>
+    </tr>
+    {% for user in all_users %}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.nome}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.tipo}}</td>
+        <td><a href="{% url 'excluir_usuario' id=user.id %}">excluir</a></td>
+        <td><a href="{% url 'editar_usuario' id=user.id %}">editar</a></td>
+    </tr>
+    {% endfor %}
+</table>

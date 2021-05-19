@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<td>Id: {{user.id}}</td>
+	</tr>
+	<tr>
+		<td>Nome: {{user.nome}}</td>
+	</tr>
+	<tr>
+        <td>Email: {{user.email}}</td>
+	</tr>
+	<tr>
+        <td>Tipo Usuário: {{user.tipo}}</td>
+	</tr>
+</table>
+
+ <a href="{% url 'listar_usuarios' %}">Cancelar</a>
+ <a href="{% url 'confirmar_exclusao' id=user.id %}">Confirmar</a>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de usuários</title>
+</head>
+<body>
+    {% load crispy_forms_tags %}
+<form method="post">
+    <div name="form-groupe">
+        {% csrf_token %}
+        {{form_usuario|crispy}}
+        <input type="submit" value="Cadastrar" class="btn btn-primary">
+    </div>
+</form>
+
+</body>
+</html>
