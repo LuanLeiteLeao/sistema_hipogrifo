@@ -6,12 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/uteis/alert.css' %}">
     <link rel="stylesheet" href="{% static 'css/account/style.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
+    {% if form_usuario.errors %}
+                        {% for field in form_usuario %}
+                            {% for error in field.errors %}
+                               <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Danger!</strong> {{ error|escape }}</div>
+                                <!-- <div >
+                                    <strong></strong>
+                                </div> -->
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form_usuario.non_field_errors %}
+                            <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Danger!</strong> {{ error|escape }}</div>
+                            <!-- <div >
+                                <strong>{{ error|escape }}</strong>
+                            </div> -->
+                        {% endfor %}
+                    {% endif %}
+     <!-- <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+       </div> -->
+       
     <div class="container">
+      
+
         <div class="content first-content">
             <div class="first-column">
                 <h2 class="title title-primary">Bem vindo !</h2>
@@ -21,41 +49,52 @@
             <div class="second-column">
                 <h2 class="title title-second">Cadastro</h2>
                 <br>
-                <form class="form">
-                    <label class="label-cadastrar" for="">
+                {% comment %}
+                   {{form_usuario}}
+                      {% endcomment %} 
+                <form onSubmit="on_submit()" class="form" action="{% url 'signup' %}"  method="POST">
+                    {% csrf_token %}
+
+                   <label class="label-cadastrar" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Nome">
+                        {{form_usuario.nome}}
+                        <!-- <input type="text" placeholder="Nome"> -->
                     </label>
                     
                     <label class="label-cadastrar" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input type="text" placeholder="CPF" maxlength="11">
+                        {{form_usuario.cpf}}
+                        <!-- <input type="text" placeholder="CPF" maxlength="11"> -->
                     </label>
                     
                     <label class="label-cadastrar" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
+                        {{form_usuario.email}}
+                        <!-- <input type="email" placeholder="Email"> -->
                     </label>
 
                     <label class="label-cadastrar" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Senha">
+                        {{form_usuario.password1}}
+                        <!-- <input type="password" placeholder="Senha"> -->
                     </label>
 
                     <label class="label-cadastrar" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Confirme sua senha">
+                        {{form_usuario.password2}}
+                        <!-- <input type="password" placeholder="Confirme sua senha"> -->
                     </label>
                 
                        <label class="label-cadastrar" for="">
-                         <select id = "custom-select" name="tipousuario">
+                        {{form_usuario.tipo}}
+                         <!-- <select id = "custom-select" name="tipousuario">
                          <option>Selecione seu tipo de usuário</option>
                          <option> Aluno </option>
                          <option> Professor</option>
                         <option> Administrador</option>
-                         </select>
+                         </select> -->
                         </label>
-
+                        
                     <button class="btn btn-second">Salvar</button>        
                 </form>
             </div><!-- second column -->
@@ -89,6 +128,9 @@
             </div><!-- second column -->
         </div><!-- second-content -->
     </div>
+    <script type="text/javascript"  src="{% static 'js/uteis/alert.js' %}"></script>
     <script type="text/javascript"  src="{% static 'js/account/app.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 </body>
 </html>

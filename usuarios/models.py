@@ -14,9 +14,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
 
     email = models.EmailField(_('email address'), unique=True)
-    nome = models.CharField("Nome", max_length=100, blank=True, null=True)
-    cpf = models.CharField("CPF",max_length=11, blank=True, null=True, unique=True)
-    tipo = models.IntegerField("Tipo de Usuário",choices=TIPO_USUARIO_CHOICES, blank=True, null=True)
+    nome = models.CharField("Nome", max_length=100, blank=False, null=True)
+    cpf = models.CharField("CPF",max_length=11, blank=False, null=True, unique=True)
+    tipo = models.IntegerField("Tipo de Usuário",choices=TIPO_USUARIO_CHOICES, blank=False, null=True)
     
 
     USERNAME_FIELD = 'email'

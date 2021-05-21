@@ -1,3 +1,4 @@
+/*id_tipo*/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap");
 * {
     margin: 0;
@@ -229,7 +230,7 @@ input:-webkit-autofill {
 
 /*the container must be positioned relative:*/
 
-#custom-select {
+#id_tipo {
     background-color: #ecf0f1;
     margin: 8px;
     width: 100%;
@@ -242,7 +243,7 @@ input:-webkit-autofill {
     margin: 8px; */
 }
 
-.custom-select select {
+.id_tipo select {
     display: none;
     /*hide original SELECT element:*/
 }

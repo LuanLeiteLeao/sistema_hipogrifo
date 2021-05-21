@@ -5,8 +5,11 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from .uteis import gerar_senha  
 
+# account ------------------- 
+
 def signin(request):
     context = {}
+    context.update({'form_usuario':UserCreationForm()})
     if request.method == "POST":
         email = request.POST["email"]
         password = request.POST["password"]
@@ -18,22 +21,17 @@ def signin(request):
              context.update({'erros':['Campo Usuário ou Senha: Inválido.']})
     return render(request,'account/login_novo_usuario.html',context)
 
-    # context = {}
-    # if request.method == "POST":
-    #     print("entrei 1")
-    #     form_usuario = UserCreationForm(request.POST)
-    #     if form_usuario.is_valid():
-    #         print("entrei 2")
-    #         form_usuario.save()
-    #         return redirect('index')
-    #     else:
-    #         print("entrei 3")
-    #         context.update({'erros':['Campo Usuário ou Senha: Inválido.']})  
-    # # return render(request, 'usuarios/cadastro.html', {'form_usuario': form_usuario})
-    # return render(request,'account/login_novo_usuario.html',context)
-
 def signup(request):
-    return render(request,'account/login_novo_usuario.html')
+    if request.method == "POST":
+        form_usuario = UserCreationForm(request.POST)
+        if form_usuario.is_valid():
+            form_usuario.save()
+            return redirect('index')
+    else:
+        form_usuario = UserCreationForm()
+    return render(request, 'account/login_novo_usuario.html', {'form_usuario': form_usuario})
+    # return render(request,'account/login_novo_usuario.html')
+# account -------------------
 
 def cadastrar_usuario(request):
     if request.method == "POST":

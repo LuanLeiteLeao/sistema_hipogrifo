@@ -1,9 +1,11 @@
-
 var url_atual = window.location.href;
 var is_url_login = url_atual.indexOf('signin')!=-1?true:false; 
 var is_url_cadastrar = url_atual.indexOf('signup')!=-1?true:false; 
 
 window.onload = () => { 
+	// começar no topo
+	  window.scrollTo(0, 0);
+	  // selecionar a tela que deve começar
 	if(is_url_login){
 		ativar_sign_in_js()
 	}else if(is_url_cadastrar){
@@ -12,6 +14,20 @@ window.onload = () => {
 	
 } 
 
+ on_submit=()=>{
+	 // var $seuCampoCpf = $("#id_cpf");
+        $("#id_cpf").unmask();
+        // $seuCampoCpf.mask('00000000000', {reverse: true});
+
+ 	 	alert($('#id_cpf').val())
+//  	var value = $('#id_cpf').maskMoney('unmasked')[0];
+// console.log("-------------")
+//  	console.log(value)
+//     $('#id_cpf').val(value);
+// alert(document.getElementById('id_cpf').value);
+ 	// ( '#id_cpf' ).mask( 'MASK', { placeholder: '' } );
+
+ }
 
 var btnSignin = document.querySelector("#signin");
 var btnSignup = document.querySelector("#signup");
