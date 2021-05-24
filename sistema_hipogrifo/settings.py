@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     # apps
     'sistema_hipogrifo',
-    'usuarios',
-    'administrador'
+    'account',
+    'administrador',
 ]
 
 MIDDLEWARE = [
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'usuarios.CustomUser'
+AUTH_USER_MODEL = 'account.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

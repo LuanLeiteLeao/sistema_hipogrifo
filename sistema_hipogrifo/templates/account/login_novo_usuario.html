@@ -122,7 +122,7 @@
                        <label style="text-align: center;color: red"> {{erro}}</label>
                     {% endfor %}
 
-                    <a class="password" href="#">Esqueceu a senha? </a>
+                    <a class="password" href="{% url 'redefinir_senha' %}">Esqueceu a senha? </a>
                     <button type="submit" class="btn btn-second">Entrar</button>
                 </form>
             </div><!-- second column -->

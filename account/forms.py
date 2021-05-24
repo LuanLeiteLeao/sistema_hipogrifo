@@ -1,19 +1,19 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import  forms
-from .models import CustomUser
+from .models import User
 from django.forms import ModelForm, Textarea
 
-class CustomUserCreationForm(UserCreationForm):
+class UserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
-        model = CustomUser
+        model = User
         fields = ('email',)
 
 
-class CustomUserChangeForm(UserChangeForm):
+class UserChangeForm(UserChangeForm):
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ('email',)
 
 class UserCreationForm(UserCreationForm):
@@ -23,11 +23,11 @@ class UserCreationForm(UserCreationForm):
       self.fields['nome'].widget.attrs.update({'placeholder':'Nome'})
       self.fields['email'].widget.attrs.update({'placeholder':'Email'})
       self.fields['cpf'].widget.attrs.update({'placeholder':'CPF'})
-      # self.fields['password1'].widget.attrs.update({'placeholder':'Password'})        
-      # self.fields['password2'].widget.attrs.update({'placeholder':'Confirme sua senha'})
+      self.fields['password1'].widget.attrs.update({'placeholder':'Password'})        
+      self.fields['password2'].widget.attrs.update({'placeholder':'Confirme sua senha'})
 
   class Meta:
-  	model = CustomUser
+  	model = User
   	fields = ['email','nome','cpf','tipo']
     # widgets = {'cpf': forms.TextInput(attrs={'data-mask':"000-000-0000"})}
   	widgets = {

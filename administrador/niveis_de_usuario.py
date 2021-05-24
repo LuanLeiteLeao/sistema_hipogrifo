@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import user_passes_test
-from usuarios.models import CustomUser
+from account.models import User
 
 def has_user_permission(function=None,tipo_usuario_permitidos=None):
     def is_customer(u):
     	is_achei = False
 
     	try:
-    		user = CustomUser.objects.get(id=u.id)	
+    		user = User.objects.get(id=u.id)	
     	except :
     		print("ERRO DE EXEÇÃO: Usuário com ID {} não existe".format(u.id))	
     		raise Exception("ERRO DE BUSCA: Usuário com ID {} não existe".format(u.id))
