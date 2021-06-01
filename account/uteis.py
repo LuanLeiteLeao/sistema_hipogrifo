@@ -12,4 +12,13 @@ def gerar_senha(email,cpf):
 	user.set_password(senha_gerada)
 	user.save()
 	send_email.confirmacao_novo_cadastro_pessoa(user.nome,senha_gerada,'luanleiteraio@gmail.com')
-	
+
+def get_usuario_logado(id):
+	# caso exista retorna o usuario logado nesta secao
+	try:
+		user = User.objects.get(id=id)
+		return user
+
+	except:
+		return None
+

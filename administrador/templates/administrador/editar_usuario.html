@@ -1,4 +1,6 @@
-<form ethod="post">
-	{{form.tipo}}
+<form method="post">
+	{% csrf_token %}
+	
+	{{form}}
+	<button type="submit">salvar</button>
 </form>
-<button type="submit">salvar</button>

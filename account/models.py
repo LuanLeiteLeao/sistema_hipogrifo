@@ -12,7 +12,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     # status do usuario ativo/desativo
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
-
     email = models.EmailField(_('email address'), unique=True)
     nome = models.CharField("Nome", max_length=100, blank=False, null=True)
     cpf = models.CharField("CPF",max_length=11, blank=False, null=True, unique=True)

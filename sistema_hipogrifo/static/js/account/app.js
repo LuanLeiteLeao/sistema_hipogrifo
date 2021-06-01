@@ -1,5 +1,9 @@
 var url_atual = window.location.href;
+
 var is_url_login = url_atual.indexOf('signin')!=-1?true:false; 
+var is_url_cadastrar = url_atual.indexOf('signup')!=-1?true:false; 
+
+var is_url_login = url_atual.indexOf('login')!=-1?true:false; 
 var is_url_cadastrar = url_atual.indexOf('signup')!=-1?true:false; 
 
 window.onload = () => { 
