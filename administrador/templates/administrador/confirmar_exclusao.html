@@ -1,3 +1,40 @@
+{% extends 'base_administrador.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <h4>  Você deseja excluir ? </h4>
+        <div class="card mb-3">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id : {{user.id}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Nome : {{user.nome}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Email : {{user.email}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">CPF : {{user.cpf}}</th>
+                    </tr>
+                     <tr>
+                        <th scope="col">Tipo Usuário : {{user.tipo}}</th>
+                    </tr> 
+                        
+                        
+                        
+                </thead>
+            </table>
+        </div>
+        <a href="{% url 'listar_usuarios' %}" class="btn btn-danger" type ="button">Cancelar</a>
+ 		<a href="{% url 'confirmar_exclusao' id=user.id %}" class="btn btn-success" type ="button">Confirmar</a>
+    </div>
+</div>
+{% endblock %}
+
+      
 <table>
 	<tr>
 		<td>Id: {{user.id}}</td>

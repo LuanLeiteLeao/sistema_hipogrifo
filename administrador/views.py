@@ -11,6 +11,8 @@ from .niveis_de_usuario import has_user_permission
 @has_user_permission(tipo_usuario_permitidos=[ADMINISTRADOR])
 def listar_usuarios(request):
 	all_users = User.objects.all()
+	
+	# return render(request,'base_administrador.html',{'all_users':all_users})
 	return render(request,'administrador/listar_usuarios.html',{'all_users':all_users})
 
 @login_required(login_url='/account/signin')

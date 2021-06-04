@@ -1,20 +1,48 @@
-<table border="1">
-    <tr>
-        <td>Id</td>
-        <td>Nome</td>
-        <td>Email</td>
-        <td>Tipo Usuário</td>
-        <td>Editar</td>
-        <td>Excluir</td>
-    </tr>
-    {% for user in all_users %}
-    <tr>
-        <td>{{user.id}}</td>
-        <td>{{user.nome}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.tipo}}</td>
-        <td><a href="{% url 'excluir_usuario' id=user.id %}">excluir</a></td>
-        <td><a href="{% url 'editar_usuario' id=user.id %}">editar</a></td>
-    </tr>
-    {% endfor %}
-</table>
+{% extends 'base_administrador.html' %}
+{% block content %} 
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-3">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Tipo Usuário</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in all_users %}
+                    <tr>
+                        <th scope="row">{{user.id}}</th>
+                        <td>{{user.nome}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.cpf}}</td>
+                        <td>{{user.tipo}}</td>
+                       
+                        <td>
+                            <a href="{% url 'excluir_usuario' id=user.id %}">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                       
+                        <td>
+                            <a href="{% url 'editar_usuario' id=user.id %}">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ {% endblock %}
+
