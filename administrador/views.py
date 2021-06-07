@@ -1,10 +1,11 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 from account.models import User
 from django.shortcuts import get_object_or_404
 from account.forms import UserCreationForm,EditeUserForm
 from account.constantes import ADMINISTRADOR,ALUNO,PROFESSOR
 from .niveis_de_usuario import has_user_permission
+from account.uteis import gerar_senha
 
 
 @login_required(login_url='/account/signin')
@@ -42,5 +43,27 @@ def editar_usuario(request,id):
 		form = EditeUserForm(instance=user)
 
 	return render(request,'administrador/editar_usuario.html',{'form':form})
+
+@login_required(login_url='/account/signin')
+@has_user_permission(tipo_usuario_permitidos=[ADMINISTRADOR])
+def confirmar_resetar_senha(request,id):
+	user = User.objects.get(id=id)
+	return render(request,'administrador/confirmar_resetar_senha.html',{'user':user})
+
+@login_required(login_url='/account/signin')
+@has_user_permission(tipo_usuario_permitidos=[ADMINISTRADOR])
+def resetar_senha(request,id):
+	"""
+	gera um senha aleatorio para o usuario e manda por email
+	"""
+
+	user = get_object_or_404(User,id=id)
+	gerar_senha(user.email,user.cpf)
+
+	return redirect(listar_usuarios)
+
+
+
+
 
 
