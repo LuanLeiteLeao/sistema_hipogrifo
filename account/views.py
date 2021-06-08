@@ -16,11 +16,7 @@ def signin(request):
         if usuario is not None:
             
             login(request, usuario)
-            print(usuario)
             user = get_usuario_logado(usuario.id) 
-            print(user.id)
-            print(user.tipo)
-            print(user)
 
             if usuario.tipo == ADMINISTRADOR[0]:
                 return render(request,'usuarios/administrador.html')
@@ -53,8 +49,6 @@ def redefinir_senha(request):
 			#removendo - e . da mascara do cpf 000.000.000-00 
 			cpf = request.POST['cpf'].replace('.','').replace('-','')
 			email = request.POST['email']
-			print('cpf ----->  {}'.format(cpf))	
-			print('email ----->  {}'.format(email))
-			print(gerar_senha(email,cpf))
+			gerar_senha(email,cpf)
 	return render(request,'usuarios/redefinir_senha.html', {'form_redefinir_senha':RedefinirSenhaForm()})
 

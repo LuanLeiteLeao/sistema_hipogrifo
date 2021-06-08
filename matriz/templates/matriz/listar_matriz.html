@@ -1,0 +1,43 @@
+{% for m in matriz %}
+	{{m}}
+{% endfor %}
+
+<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Carga Horaria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for matriz in all_matriz %}
+                    <tr>
+                        <th scope="row">{{user.id}}</th>
+                        <td>{{matriz.nome}}</td>
+                        <td>{{matriz.ano}}</td>
+                        <td>{{matriz.status}}</td>
+                        <td>{{matriz.carga_horaria}}</td>
+                       
+                        <td>
+                            <a href="{% url 'editar_usuario' id=user.id %}">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'excluir_usuario' id=user.id %}">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                         <td>
+                            <a href="{% url 'confirmar_resetar_senha' id=user.id %}">
+                                <i class="fas fa-redo"></i>
+                            </a>
+                        </td>
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>

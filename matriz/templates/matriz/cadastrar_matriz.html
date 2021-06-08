@@ -1,0 +1,13 @@
+<h1>Cadastrar Musica</h1>
+<form method="post">
+	<div style="color:red">
+			{{erros}}
+	</div>		
+		<br>
+		<br>
+		<br>
+	</div>
+	{% csrf_token %} 
+	{{form}}
+	<button type="submit">Enviar</button>	
+</form>

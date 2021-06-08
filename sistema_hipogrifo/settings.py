@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'sistema_hipogrifo',
     'account',
     'administrador',
+    'matriz',
 ]
 
 MIDDLEWARE = [
