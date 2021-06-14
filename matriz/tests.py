@@ -31,6 +31,14 @@ class TestViewMatriz(TestCase):
 		self.assertEqual(response.status_code,200)
 
 	def test_excluir_usuario(self):
-		response = self.client.post("/matriz/excluir_usuario/{}".format(self.matriz_test.id))
+		response = self.client.post("/matriz/excluir/{}".format(self.matriz_test.id))
 		# 302 e usado para redirecinamento de pagina
 		self.assertEqual(response.status_code,302)
+
+	def test_editar_matriz_get(self):
+		response = self.client.get("/matriz/editar/{}".format(self.matriz_test.id))
+		self.assertEqual(response.status_code,200)
+
+	def test_editar_matriz_post(self):
+		response = self.client.post("/matriz/editar/{}".format(self.matriz_test.id),{"nome":"","ano":"12/12/12","status":1,"carga_horaria":100})
+		self.assertEqual(response.status_code,200)

@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from .forms import MatrizCreationForm
 from .models import Matriz
 # Create your views here.
@@ -25,7 +25,7 @@ def listar_matriz(request):
 
 	return render(request,"matriz/listar_matriz.html",context)
 
-def confirmar_exclusao(request,id):
+def confirmar_exclusao_matriz(request,id):
 	
 	try:	
 		matriz = Matriz.objects.get(id=id)
@@ -34,10 +34,28 @@ def confirmar_exclusao(request,id):
 		# caso a matriz nao exista da page not foud
 		return HttpResponse(status=404)	
 
-def excluir_usuario(request,id):
+def excluir_matriz(request,id):
 	
 	if request.method == "POST":
 		matriz = Matriz.objects.get(id=id)
 		matriz.delete()
 
 	return redirect(listar_matriz)	
+
+def editar_matriz(request,id):
+	matriz = get_object_or_404(Matriz,id=id)
+
+	if request.method == "POST":
+		
+		form = MatrizCreationForm(request.POST,instance=matriz)
+
+		if form.is_valid():
+			form.save()
+			return render(listar_matriz)
+
+		else:
+			print(form.errors)
+
+	
+	return HttpResponse("oi")
+	
