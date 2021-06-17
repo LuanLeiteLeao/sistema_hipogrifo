@@ -5,18 +5,20 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from .managers import UserManager
 from .constantes import TIPO_USUARIO_CHOICES
+from matriz.models import Matriz
 
 class User(AbstractBaseUser, PermissionsMixin):
     # determina se o usuario pode o nao acessar o django admin
     is_staff = models.BooleanField(default=False)
     # status do usuario ativo/desativo
     is_active = models.BooleanField(default=True)
+    is_pendente = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
     email = models.EmailField(_('email address'), unique=True)
     nome = models.CharField("Nome", max_length=100, blank=False, null=True)
     cpf = models.CharField("CPF",max_length=11, blank=False, null=True, unique=True)
     tipo = models.IntegerField("Tipo de Usuário",choices=TIPO_USUARIO_CHOICES, blank=False, null=True)
-    
+    matriz =  models.OneToOneField(verbose_name="Matriz",to=Matriz, on_delete=models.CASCADE,blank=False,null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
