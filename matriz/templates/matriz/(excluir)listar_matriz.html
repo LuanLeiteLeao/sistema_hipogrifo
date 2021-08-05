@@ -13,7 +13,8 @@
   {% load static %}
 
   <!-- Custom fonts for this template-->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  
+  <link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
   <!-- Page level plugin CSS-->
   <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
@@ -80,6 +81,11 @@
         <span>Aprovações</span></a>
     </li>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="AdicionarMATRIZ.html">
+      <i class="fas fa-plus-square"></i>
+      <span>Adicionar Matriz</span></a>
+  </li>
   
   </li>
     </ul>
@@ -88,54 +94,72 @@
 
       <div class="container-fluid">
 
-       <!-- Area Chart Example
-       <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-area"></i>
-          Gráfico  </div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div>-->
-      <h4>  Você deseja excluir a seguinte matriz ? </h4>
+       <!-- Area Chart Example-->
+
 
       <div class="row">
-        <div class="col-lg-8">
-          <div class="card mb-3">
-            
+        <div class="col-lg">
+          <div class="card mb">
+            <div class="row">
+             <div class="col-lg">
+                <div class="card ">
+
             <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Ano</th>
-                  <th scope="col">Curso</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Carga horária</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">{{matriz.id}}</th>
-                  <td>{{matriz.ano}}</td>
-                  <td>{{matriz.tatus}}</td>
-                  <td>{{matriz.carga_horaria}}</td>
-                  
-                  </svg></td>
-                </tr>
-                <tr>
-                  
-                
-                </tr>
-              </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Ano/Semestre</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Carga Horária</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Visualizar</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {% for matriz in all_matriz %}
+                    <tr>
+                        <th scope="row">{{matriz.id}}</th>
+                        <td>{{matriz.nome}}</td>
+                        <td>{{matriz.ano}}</td>
+                        <td>{{matriz.carga_horaria}}</td>
+
+                        
+                        <td>  {{matriz.status}}   </td>
+                        
+                       
+                        <td>
+                            <a href= "./listarDISCIPLINA.html">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href= "./EditarMATRIZ.html" >
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                         <td>
+                            <a href= "{% url 'confirmar_exclusao_matriz' matriz.id %}">
+                            
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
+        </div>
+    </div>
+</div>
+           
           </div>
-          <a href= "{% url 'excluir_usuario' matriz.id %}"  class="btn btn-success">Confirmar</a>
-          <a href= "{% url 'listar_matriz' %}"  class="btn btn-danger">Cancelar</a>
         </div>
       </div>
 
       <p class="small text-center text-muted my-5">
-        <em></em>
+        
       </p>
 
     </div>

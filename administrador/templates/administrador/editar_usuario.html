@@ -1,6 +1,22 @@
-<form method="post">
-	{% csrf_token %}
-	
-	{{form}}
-	<button type="submit">salvar</button>
-</form>
+{% extends 'base_administrador.html' %}{% load crispy_forms_tags %} {% block css %}
+<style>
+    form {
+        margin: 30px;
+    }
+    
+    #div_id_password1 {
+        display: none;
+    }
+    
+    #div_id_password2 {
+        display: none;
+    }
+</style>
+{% endblock %} {% block content %}
+<div class="card">
+    <form method="post">
+        {% csrf_token %} {{form|crispy}}
+        <button type="submit">salvar</button>
+    </form>
+</div>
+{% endblock %}

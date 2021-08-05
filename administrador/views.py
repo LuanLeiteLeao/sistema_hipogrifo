@@ -25,6 +25,7 @@ def excluir_usuario(request,id):
 def confirmar_exclusao(request,id):
 	user = User.objects.get(id=id)
 	user.delete()
+	print("OIIIIIII")
 	return redirect(listar_usuarios)	
 
 @login_required(login_url='/account/signin')

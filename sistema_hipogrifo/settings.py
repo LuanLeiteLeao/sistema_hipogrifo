@@ -59,7 +59,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sistema_hipogrifo.urls'
 
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {

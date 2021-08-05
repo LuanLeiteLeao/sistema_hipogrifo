@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/newimagem.css' %}">
+
+    <link rel=" stylesheet " href="https://use.fontawesome.com/releases/v5.8.2/css/all.css " integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay " crossorigin="anonymous ">
+</head>
+
+<body>
+    <div class="container ">
+        <div class="content first-content ">
+            <div class="first-column ">
+
+                <img class="imagemhipogrifo " src="{% static 'imagem/hipogrifo.png' %}" alt="Dispute Bills ">
+                <h2 class="title title-primary ">Bem vindo aluno (a) !</h2>
+                <p class="description description-primary ">Para continuar conosco escolha sua matriz </p>
+
+            </div>
+            <div class="second-column ">
+                <h5 class="title title-second "> Matriz</h5>
+                <br>
+                <br>
+
+                <br>
+                <br>
+                <form method="post">
+                {% csrf_token %}
+                          <select  name="matriz" id="inputState" class="form-control">
+                        <option>Selecione sua matriz</option>
+                        {% for m in all_matriz %}
+                         <option value={{m.id}}> {{m.nome}} </option>
+                         {% endfor %}
+ 
+</select>
+                         <!-- <select id = "custom-select " name="tipousuario ">
+                         <option>Selecione sua matriz</option>
+                        {% for m in all_matriz %}
+                         <option> {{m.nome}} </option>
+                         {% endfor %}
+                         <option>  Matriz 2</option>
+                        <option>  Matriz 3</option>
+                         </select>
+                        -->
+                 
+                <br>
+                <br>
+
+                <button type="submit" class="btn btn-second ">Entrar</button>
+                </form>
+            </div>
+            <!-- second column -->
+        </div>
+        <!-- first content -->
+        <div class="content second-content ">
+            <div class="first-column ">
+                <p class="description description-primary ">Bem vindo aluno (a) ! ,</p>
+                <p class="description description-primary "> para continuar conosco escolha sua matriz !</p>
+            </div>
+
+        </div>
+        <script src="js/app.js "></script>
+</body>
+
+</html>

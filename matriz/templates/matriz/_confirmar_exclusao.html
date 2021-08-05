@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-lg-8">
+        <h4>  Você deseja excluir ? </h4>
+        <div class="card mb-3">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id : {{matriz.id}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Nome : {{matriz.nome}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Ano : {{matriz.ano}}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Status : {{matriz.status}}</th>
+                    </tr>
+                     <tr>
+                        <th scope="col">Carga Horaria: {{matriz.carga_horaria}}</th>
+                    </tr> 
+                        
+                        
+                        
+                </thead>
+            </table>
+        </div>
+        <a href="{% url 'listar_matriz' %}" class="btn btn-danger" type ="button">Cancelar</a>
+ 		<a href="{% url 'confirmar_exclusao' id=user.id %}" class="btn btn-success" type ="button">Confirmar</a>
+    </div>
+</div>

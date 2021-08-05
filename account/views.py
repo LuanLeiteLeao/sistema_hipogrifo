@@ -14,12 +14,12 @@ def signin(request):
         password = request.POST["password"]
         usuario = authenticate(request, email=email, password=password)
         if usuario is not None:
-            
+            print("eu entrei aqui")
             login(request, usuario)
-            user = get_usuario_logado(usuario.id) 
+            user = get_usuario_logado(usuario.id)  
 
             if usuario.tipo == ADMINISTRADOR[0]:
-                return render(request,'usuarios/administrador.html')
+                return redirect('/administrador/')
 
             elif usuario.tipo == ALUNO[0]:
                 return render(request,'usuarios/aluno.html')
